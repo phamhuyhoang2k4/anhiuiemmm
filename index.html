@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nhật ký tình yêu 💕</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --hot-pink: #ff6b9d;
+      --deep-pink: #ff1493;
+      --rose-glow: #ff85a2;
+      --magenta: #e91e8c;
+      --blush-dark: #ffc0cb;
+      --cream: #fff5f8;
+      --white-soft: rgba(255, 255, 255, 0.9);
+      --pink-shadow: rgba(255, 20, 147, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body, a, button, input, textarea, label, select {
+      cursor: none;
+    }
+
+    /* Con trỏ chuột - ảnh theo chuột */
+    .custom-cursor {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99999;
+      background-image: url('z7574744147805_ab6b33bf96bfb0962ffc056b20edb4a9.jpg');
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+      transition: transform 0.1s ease-out;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #ffecd2 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Floating hearts background */
+    .hearts-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 1.2rem;
+      opacity: 0.2;
+      animation: floatHeart 8s ease-in-out infinite;
+    }
+
+    .heart:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+    .heart:nth-child(2) { left: 85%; top: 15%; animation-delay: 1s; }
+    .heart:nth-child(3) { left: 25%; top: 70%; animation-delay: 2s; }
+    .heart:nth-child(4) { left: 70%; top: 60%; animation-delay: 0.5s; }
+    .heart:nth-child(5) { left: 50%; top: 40%; animation-delay: 3s; }
+    .heart:nth-child(6) { left: 5%; top: 50%; animation-delay: 1.5s; }
+    .heart:nth-child(7) { left: 90%; top: 80%; animation-delay: 2.5s; }
+
+    @keyframes floatHeart {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.2; }
+      50% { transform: translateY(-20px) scale(1.2); opacity: 0.4; }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* Header phá cách - lệch trái */
+    header {
+      margin-bottom: 2.5rem;
+      padding-left: 1rem;
+      border-left: 5px solid var(--deep-pink);
+      animation: slideIn 0.8s ease;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--deep-pink), var(--hot-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 2px 10px rgba(255, 20, 147, 0.3));
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: var(--magenta);
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    /* Tabs - dạng pill với glow */
+    .tabs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 0.8rem 2rem;
+      border: none;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+      color: var(--deep-pink);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 15px rgba(255, 107, 157, 0.2);
+    }
+
+    .tab-btn:hover {
+      background: linear-gradient(135deg, var(--hot-pink), var(--deep-pink));
+      color: white;
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px var(--pink-shadow);
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--deep-pink), var(--magenta));
+      color: white;
+      box-shadow: 0 8px 30px var(--pink-shadow), inset 0 1px 0 rgba(255,255,255,0.3);
+    }
+
+    .section {
+      display: none;
+      animation: fadeSlide 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(20px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Card - glassmorphism + blob shape */
+    .card {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(20px);
+      border-radius: 30px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 8px 32px rgba(255, 107, 157, 0.25),
+                  inset 0 1px 0 rgba(255,255,255,0.8);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      transition: all 0.4s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 12px 40px rgba(255, 20, 147, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--magenta);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border: 2px solid rgba(255, 107, 157, 0.4);
+      border-radius: 15px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--deep-pink);
+      box-shadow: 0 0 0 4px rgba(255, 20, 147, 0.15);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .btn {
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--hot-pink), var(--deep-pink));
+      color: white;
+      box-shadow: 0 6px 20px var(--pink-shadow);
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 30px var(--pink-shadow);
+    }
+
+    /* Anniversary items - staggered layout */
+    .anniversary-item {
+      background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255, 182, 193, 0.3) 100%);
+      border-radius: 20px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border-left: 5px solid var(--hot-pink);
+      box-shadow: 0 4px 20px rgba(255, 107, 157, 0.2);
+      animation: popIn 0.4s ease backwards;
+      transition: all 0.3s ease;
+    }
+
+    .anniversary-item:nth-child(odd) { transform: translateX(0); }
+    .anniversary-item:nth-child(even) { transform: translateX(10px); border-left-color: var(--deep-pink); }
+
+    .anniversary-item:hover {
+      transform: translateX(5px) scale(1.01);
+      box-shadow: 0 6px 25px var(--pink-shadow);
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .anniversary-date {
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--deep-pink), var(--magenta));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .anniversary-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--magenta);
+      margin-bottom: 0.5rem;
+    }
+
+    .anniversary-note {
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .delete-btn {
+      background: transparent;
+      border: none;
+      color: var(--rose-glow);
+      cursor: pointer;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      padding: 0.3rem;
+      transition: color 0.3s;
+    }
+
+    .delete-btn:hover {
+      color: #ff1744;
+    }
+
+    /* Photo upload - nhỏ gọn */
+    .photo-upload {
+      border: 2px dashed var(--hot-pink);
+      border-radius: 15px;
+      padding: 1rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: rgba(255, 107, 157, 0.08);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .photo-upload:hover {
+      border-color: var(--deep-pink);
+      background: rgba(255, 107, 157, 0.15);
+    }
+
+    .photo-upload input { display: none; }
+
+    .upload-icon {
+      font-size: 1.3rem;
+    }
+
+    /* Gallery layouts */
+    .gallery-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .gallery-mode-btn {
+      padding: 0.4rem 0.8rem;
+      border: 1px solid var(--rose-glow);
+      background: rgba(255,255,255,0.5);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--magenta);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .gallery-mode-btn:hover, .gallery-mode-btn.active {
+      background: var(--hot-pink);
+      color: white;
+      border-color: var(--deep-pink);
+    }
+
+    .photo-gallery {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Bento - nhiều kích thước */
+    .photo-gallery.mode-bento {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto;
+    }
+
+    .photo-gallery.mode-bento .photo-item:nth-child(6n+1) { grid-column: span 2; grid-row: span 2; }
+    .photo-gallery.mode-bento .photo-item:nth-child(6n+2) { grid-column: span 2; }
+
+    /* Tự do - ảnh riêng biệt, mỗi ảnh chuyển động trong ô của mình */
+    .photo-gallery.mode-float {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 2rem;
+      min-height: 300px;
+    }
+
+    .photo-gallery.mode-float .photo-item {
+      justify-self: center;
+      animation: floatAround 10s ease-in-out infinite;
+    }
+
+    .photo-gallery.mode-float .photo-item:nth-child(3n+1) { animation-duration: 12s; animation-delay: 0s; }
+    .photo-gallery.mode-float .photo-item:nth-child(3n+2) { animation-duration: 14s; animation-delay: 1s; }
+    .photo-gallery.mode-float .photo-item:nth-child(3n+3) { animation-duration: 11s; animation-delay: 2s; }
+
+    @keyframes floatAround {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(8px, -10px) rotate(3deg); }
+      50% { transform: translate(-6px, 8px) rotate(-2deg); }
+      75% { transform: translate(10px, 6px) rotate(2deg); }
+    }
+
+    .photo-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      box-shadow: 0 8px 25px rgba(255, 107, 157, 0.3);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: scaleIn 0.4s ease backwards;
+    }
+
+    .photo-item:hover {
+      transform: scale(1.08) rotate(2deg);
+      box-shadow: 0 15px 40px var(--pink-shadow);
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-item .delete-photo {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: rgba(255, 20, 147, 0.8);
+      color: white;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .photo-item:hover .delete-photo {
+      opacity: 1;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 2.5rem;
+      color: var(--magenta);
+    }
+
+    .empty-state .icon {
+      font-size: 3.5rem;
+      margin-bottom: 0.5rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    /* Phần tiêu đề ảnh - duck themed */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--deep-pink), var(--magenta));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Lời nhắn yêu thương - dạng tin nhắn */
+    .msg-form-row {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .msg-type-btn {
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--rose-glow);
+      background: rgba(255,255,255,0.5);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--magenta);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .msg-type-btn:hover, .msg-type-btn.active {
+      background: var(--hot-pink);
+      color: white;
+      border-color: var(--deep-pink);
+    }
+
+    .msg-form-part { display: none; }
+    .msg-form-part.active { display: block; }
+
+    .msg-record-btn {
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      border: 2px solid var(--hot-pink);
+      background: rgba(255,107,157,0.2);
+      color: var(--deep-pink);
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s;
+    }
+
+    .msg-record-btn:hover { background: var(--hot-pink); color: white; }
+    .msg-record-btn.recording { background: #e91e63; color: white; animation: pulse 1s infinite; }
+
+    .msg-list {
+      max-height: 400px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .msg-list::-webkit-scrollbar { display: none; }
+
+    .msg-bubble {
+      background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,182,193,0.3) 100%);
+      border-radius: 18px;
+      padding: 1rem 1.2rem;
+      max-width: 85%;
+      align-self: flex-end;
+      box-shadow: 0 4px 15px rgba(255,107,157,0.2);
+      animation: popIn 0.3s ease;
+    }
+
+    .msg-bubble .msg-text { margin-bottom: 0.5rem; line-height: 1.5; }
+    .msg-bubble .msg-image { max-width: 100%; border-radius: 10px; margin-top: 0.5rem; }
+    .msg-bubble .msg-voice { margin-top: 0.5rem; }
+    .msg-bubble .msg-voice audio { width: 100%; max-width: 280px; }
+    .msg-bubble .msg-time { font-size: 0.75rem; color: var(--rose-dark); margin-top: 0.5rem; }
+    .msg-bubble .msg-delete { margin-top: 0.5rem; }
+    .msg-bubble .msg-delete button {
+      background: none; border: none; color: var(--rose-glow); font-size: 0.85rem; cursor: pointer; padding: 0;
+    }
+    .msg-bubble .msg-delete button:hover { color: #ff1744; }
+
+    .msg-upload-img {
+      border: 2px dashed var(--hot-pink);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      cursor: pointer;
+      background: rgba(255,107,157,0.08);
+    }
+
+    .msg-upload-img:hover { background: rgba(255,107,157,0.15); }
+    .msg-upload-img input { display: none; }
+
+    /* Modal mật khẩu xóa */
+    .password-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 99998;
+      align-items: center;
+      justify-content: center;
+    }
+    .password-modal-overlay.show { display: flex; }
+    .password-modal {
+      background: white;
+      border-radius: 20px;
+      padding: 1.5rem;
+      max-width: 320px;
+      width: 90%;
+      box-shadow: 0 10px 40px var(--pink-shadow);
+      border: 1px solid var(--rose-glow);
+    }
+    .password-modal h4 { margin-bottom: 0.75rem; color: var(--magenta); font-size: 1rem; }
+    .password-modal input[type="password"] {
+      width: 100%;
+      padding: 0.6rem 1rem;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      border: 2px solid var(--rose-glow);
+    }
+    .password-modal-actions { display: flex; gap: 0.5rem; justify-content: flex-end; }
+    .password-modal-actions button { padding: 0.5rem 1rem; border-radius: 20px; border: none; font-weight: 600; cursor: pointer; }
+    .password-modal-cancel { background: #eee; color: #666; }
+    .password-modal-confirm { background: var(--hot-pink); color: white; }
+
+    @media (max-width: 600px) {
+      .anniversary-item:nth-child(even) { transform: translateX(0); }
+      .photo-gallery.mode-bento { grid-template-columns: repeat(2, 1fr); }
+      .photo-gallery.mode-bento .photo-item:nth-child(6n+1) { grid-column: span 2; grid-row: span 1; }
+      .photo-gallery.mode-float { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="password-modal-overlay" id="password-modal">
+    <div class="password-modal">
+      <h4>Nhập mật khẩu để xóa</h4>
+      <input type="password" id="password-input" placeholder="Mật khẩu" autocomplete="off">
+      <div class="password-modal-actions">
+        <button type="button" class="password-modal-cancel" id="password-cancel">Hủy</button>
+        <button type="button" class="password-modal-confirm" id="password-confirm">Xóa</button>
+      </div>
+    </div>
+  </div>
+  <div class="custom-cursor" id="custom-cursor"></div>
+  <div class="hearts-bg">
+    <span class="heart">💕</span>
+    <span class="heart">💗</span>
+    <span class="heart">💖</span>
+    <span class="heart">💕</span>
+    <span class="heart">💗</span>
+    <span class="heart">💖</span>
+    <span class="heart">💕</span>
+  </div>
+
+  <div class="container">
+    <header>
+      <h1>💕 Nhật ký tình yêu</h1>
+      <p class="subtitle">Anhhh iuuu iemmmmmmm</p>
+    </header>
+
+    <div class="tabs">
+      <button class="tab-btn" data-tab="anniversaries">Ngày kỷ niệm</button>
+      <button class="tab-btn active" data-tab="photos">🦆 Ảnh bé vịt</button>
+      <button class="tab-btn" data-tab="messages">💌 Lời nhắn</button>
+    </div>
+
+    <section id="anniversaries" class="section">
+      <div class="card">
+        <div id="anniversary-list"></div>
+        <h3 class="section-title">Thêm ngày kỷ niệm</h3>
+        <form id="anniversary-form">
+          <div class="form-group">
+            <label>Ngày kỷ niệm *</label>
+            <input type="date" id="anniversary-date" required>
+          </div>
+          <div class="form-group">
+            <label>Tên sự kiện (vd: Ngày yêu nhau, Ngày cưới...)</label>
+            <input type="text" id="anniversary-name" placeholder="VD: Ngày chúng mình yêu nhau">
+          </div>
+          <div class="form-group">
+            <label>Ghi chú</label>
+            <textarea id="anniversary-note" placeholder="Viết vài dòng về khoảnh khắc này..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Lưu kỷ niệm 💝</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="photos" class="section active">
+      <div class="card">
+        <h3 class="section-title">Ảnh bé vịt 🦆</h3>
+        <div class="gallery-controls" id="gallery-controls" style="display:none">
+          <span style="font-size:0.9rem;color:var(--magenta)">Hiển thị:</span>
+          <button class="gallery-mode-btn active" data-mode="bento">Bento</button>
+          <button class="gallery-mode-btn" data-mode="float">Tự do</button>
+        </div>
+        <div id="photo-gallery" class="photo-gallery mode-bento"></div>
+        <label class="photo-upload" for="photo-input">
+          <span class="upload-icon">📷</span>
+          <span>Chọn ảnh</span>
+          <input type="file" id="photo-input" accept="image/*" multiple>
+        </label>
+      </div>
+    </section>
+
+    <section id="messages" class="section">
+      <div class="card">
+        <h3 class="section-title">💌 Lời nhắn yêu thương</h3>
+        <div class="msg-form-row">
+          <button class="msg-type-btn active" data-type="text">✏️ Chữ</button>
+          <button class="msg-type-btn" data-type="image">🖼️ Ảnh</button>
+          <button class="msg-type-btn" data-type="voice">🎤 Giọng nói</button>
+        </div>
+        <form id="message-form">
+          <div class="msg-form-part active" data-part="text">
+            <textarea id="msg-text" placeholder="Viết lời yêu thương..." rows="3"></textarea>
+          </div>
+          <div class="msg-form-part" data-part="image">
+            <label class="msg-upload-img" for="msg-image-input">
+              📷 Chọn ảnh kèm tin nhắn
+              <input type="file" id="msg-image-input" accept="image/*">
+            </label>
+            <div id="msg-image-preview" style="display:none;margin-top:0.5rem"><img id="msg-preview-img" style="max-width:150px;border-radius:8px"></div>
+            <input type="hidden" id="msg-image-data">
+          </div>
+          <div class="msg-form-part" data-part="voice">
+            <button type="button" class="msg-record-btn" id="msg-record-btn">🎤 Nhấn để ghi âm</button>
+            <div id="msg-voice-preview" style="display:none;margin-top:0.5rem"></div>
+            <input type="hidden" id="msg-voice-data">
+          </div>
+          <button type="submit" class="btn btn-primary" style="margin-top:1rem">Gửi tin nhắn 💕</button>
+        </form>
+        <div id="message-list" class="msg-list" style="margin-top:1.5rem"></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="config.js"></script>
+  <script>
+    // Con trỏ chuột tùy chỉnh - ảnh theo chuột
+    const cursor = document.getElementById('custom-cursor');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = (e.clientX - 24) + 'px';
+      cursor.style.top = (e.clientY - 24) + 'px';
+      cursor.style.opacity = '1';
+    });
+    document.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; });
+    document.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; });
+
+    const DELETE_PASSWORD = '9999';
+    let pendingDeleteCallback = null;
+
+    function showPasswordModal(callback) {
+      pendingDeleteCallback = callback;
+      document.getElementById('password-modal').classList.add('show');
+      document.getElementById('password-input').value = '';
+      document.getElementById('password-input').focus();
+    }
+
+    function hidePasswordModal() {
+      document.getElementById('password-modal').classList.remove('show');
+      pendingDeleteCallback = null;
+    }
+
+    document.getElementById('password-cancel').addEventListener('click', hidePasswordModal);
+    document.getElementById('password-confirm').addEventListener('click', () => {
+      const input = document.getElementById('password-input').value;
+      if (input !== DELETE_PASSWORD) {
+        alert('Sai mật khẩu!');
+        return;
+      }
+      if (typeof pendingDeleteCallback === 'function') pendingDeleteCallback();
+      hidePasswordModal();
+    });
+
+    document.getElementById('password-input').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') document.getElementById('password-confirm').click();
+      if (e.key === 'Escape') hidePasswordModal();
+    });
+
+    const STORAGE_KEYS = {
+      photoDisplayMode: 'photoDisplayMode'
+    };
+
+    let appData = { anniversaries: [], photos: [], messages: [] };
+    function resolveApiUrl() {
+      const base = (typeof API_BASE !== 'undefined' && API_BASE) ? String(API_BASE).replace(/\/+$/, '') : '';
+      if (base) return base + '/api/data';
+      return '/api/data';
+    }
+
+    const apiUrl = resolveApiUrl();
+
+    function ensureApiConfiguredForGitHubPages() {
+      const isGitHubPages = location.hostname.endsWith('github.io');
+      const hasApiBase = (typeof API_BASE !== 'undefined' && API_BASE);
+      if (isGitHubPages && !hasApiBase) {
+        alert('Chưa cấu hình API. Bạn đang chạy trên GitHub Pages nên không thể lưu trực tiếp. Hãy điền API_BASE (URL Vercel) trong config.js rồi deploy lại.');
+        return false;
+      }
+      return true;
+    }
+
+    async function loadData() {
+      try {
+        const res = await fetch(apiUrl);
+        if (!res.ok) {
+          const body = await res.text().catch(() => '');
+          console.warn('Không tải được dữ liệu từ API:', res.status, body);
+          return;
+        }
+        const data = await res.json();
+        appData = {
+          anniversaries: data.anniversaries || [],
+          photos: data.photos || [],
+          messages: data.messages || []
+        };
+      } catch (e) {
+        console.warn('Không tải được dữ liệu từ GitHub:', e);
+      }
+    }
+
+    async function saveData(updates) {
+      try {
+        if (!ensureApiConfiguredForGitHubPages()) return false;
+        const res = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(updates)
+        });
+        if (!res.ok) {
+          const body = await res.text().catch(() => '');
+          throw new Error(`API error ${res.status}: ${body}`);
+        }
+        const result = await res.json();
+        if (result.data) {
+          appData = result.data;
+        }
+        renderAll();
+        return true;
+      } catch (e) {
+        console.error(e);
+        alert('Không lưu được. Kiểm tra kết nối và cấu hình API.');
+        return false;
+      }
+    }
+
+    function renderAll() {
+      renderAnniversaries();
+      renderPhotos();
+      renderMessages();
+    }
+
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    function getAnniversaries() {
+      return appData.anniversaries || [];
+    }
+
+    function saveAnniversaries(arr) {
+      appData.anniversaries = arr;
+      saveData({ anniversaries: arr });
+    }
+
+    function formatDate(dateStr) {
+      const d = new Date(dateStr + 'T12:00:00');
+      const day = String(d.getDate()).padStart(2, '0');
+      const month = String(d.getMonth() + 1).padStart(2, '0');
+      const year = d.getFullYear();
+      return `${day}/${month}/${year}`;
+    }
+
+    function renderAnniversaries() {
+      const list = document.getElementById('anniversary-list');
+      const items = getAnniversaries().sort((a, b) => new Date(b.date) - new Date(a.date));
+      
+      if (items.length === 0) {
+        list.innerHTML = '<div class="card empty-state"><div class="icon">💌</div><p>Chưa có ngày kỷ niệm nào. Hãy thêm ngày đầu tiên nhé!</p></div>';
+        return;
+      }
+
+      list.innerHTML = items.map((item, i) => `
+        <div class="anniversary-item" style="animation-delay: ${i * 0.05}s">
+          <div class="anniversary-date">📅 ${formatDate(item.date)}</div>
+          <div class="anniversary-name">${escapeHtml(item.name || 'Kỷ niệm')}</div>
+          <div class="anniversary-note">${escapeHtml(item.note || '')}</div>
+          <button class="delete-btn" onclick="confirmDeleteAnniversary(${i})">🗑 Xóa</button>
+        </div>
+      `).join('');
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML.replace(/\n/g, '<br>');
+    }
+
+    function confirmDeleteAnniversary(index) {
+      showPasswordModal(() => {
+        const arr = getAnniversaries();
+        arr.splice(index, 1);
+        saveAnniversaries(arr);
+      });
+    }
+
+    function deleteAnniversary(index) {
+      const arr = getAnniversaries();
+      arr.splice(index, 1);
+      saveAnniversaries(arr);
+    }
+
+    document.getElementById('anniversary-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const arr = getAnniversaries();
+      arr.push({
+        date: document.getElementById('anniversary-date').value,
+        name: document.getElementById('anniversary-name').value.trim(),
+        note: document.getElementById('anniversary-note').value.trim()
+      });
+      saveAnniversaries(arr);
+      e.target.reset();
+    });
+
+    function getPhotos() {
+      return appData.photos || [];
+    }
+
+    function savePhotos(arr) {
+      appData.photos = arr;
+      saveData({ photos: arr });
+    }
+
+    function getDisplayMode() {
+      return localStorage.getItem(STORAGE_KEYS.photoDisplayMode) || 'bento';
+    }
+
+    function setDisplayMode(mode) {
+      localStorage.setItem(STORAGE_KEYS.photoDisplayMode, mode);
+      const gallery = document.getElementById('photo-gallery');
+      gallery.className = 'photo-gallery mode-' + mode;
+      document.querySelectorAll('.gallery-mode-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.mode === mode);
+      });
+    }
+
+    function renderPhotos() {
+      const gallery = document.getElementById('photo-gallery');
+      const photos = getPhotos();
+      const controls = document.getElementById('gallery-controls');
+
+      gallery.className = 'photo-gallery mode-' + getDisplayMode();
+
+      if (photos.length === 0) {
+        gallery.innerHTML = '<div class="empty-state" style="grid-column:1/-1;padding:1.5rem"><div class="icon">🦆</div><p>Chưa có ảnh. Nhấn bên dưới để thêm!</p></div>';
+        controls.style.display = 'none';
+        return;
+      }
+
+      controls.style.display = 'flex';
+      gallery.innerHTML = photos.map((photo, i) => {
+        const style = `animation-delay: ${i * 0.03}s`;
+        return `<div class="photo-item" style="${style}">
+          <img src="${photo}" alt="Ảnh bé vịt ${i + 1}">
+          <button class="delete-photo" onclick="confirmDeletePhoto(${i})">×</button>
+        </div>`;
+      }).join('');
+    }
+
+    function confirmDeletePhoto(index) {
+      showPasswordModal(() => {
+        const arr = getPhotos();
+        arr.splice(index, 1);
+        savePhotos(arr);
+      });
+    }
+
+    function deletePhoto(index) {
+      const arr = getPhotos();
+      arr.splice(index, 1);
+      savePhotos(arr);
+    }
+
+    document.getElementById('gallery-controls')?.addEventListener('click', (e) => {
+      const btn = e.target.closest('.gallery-mode-btn');
+      if (btn) setDisplayMode(btn.dataset.mode);
+    });
+
+    document.getElementById('photo-input').addEventListener('change', (e) => {
+      const files = e.target.files;
+      if (!files.length) return;
+      const photos = getPhotos();
+      const imageFiles = Array.from(files).filter(f => f.type.startsWith('image/'));
+      let loaded = 0;
+      imageFiles.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          photos.push(reader.result);
+          loaded++;
+          if (loaded === imageFiles.length) savePhotos(photos);
+        };
+        reader.readAsDataURL(file);
+      });
+      e.target.value = '';
+    });
+
+    // === Lời nhắn yêu thương ===
+    function getMessages() {
+      return appData.messages || [];
+    }
+
+    function saveMessages(arr) {
+      appData.messages = arr;
+      saveData({ messages: arr });
+    }
+
+    function renderMessages() {
+      const list = document.getElementById('message-list');
+      const items = getMessages().sort((a,b) => (b.time || 0) - (a.time || 0));
+      if (items.length === 0) {
+        list.innerHTML = '<div class="empty-state" style="padding:1.5rem"><div class="icon">💌</div><p>Chưa có tin nhắn nào. Hãy gửi tin nhắn đầu tiên nhé!</p></div>';
+        return;
+      }
+      list.innerHTML = items.map((m, i) => {
+        const time = m.time ? new Date(m.time).toLocaleString('vi-VN') : '';
+        let content = '';
+        if (m.text) content += `<div class="msg-text">${escapeHtml(m.text)}</div>`;
+        if (m.image) content += `<div class="msg-image"><img src="${m.image}" alt="Ảnh" style="max-width:100%;border-radius:10px"></div>`;
+        if (m.voice) content += `<div class="msg-voice"><audio controls src="${m.voice}" style="max-width:280px"></audio></div>`;
+        return `<div class="msg-bubble">${content}<div class="msg-time">${time}</div><div class="msg-delete"><button type="button" onclick="confirmDeleteMessage(${m.time || 0})">🗑 Xóa</button></div></div>`;
+      }).join('');
+    }
+
+    document.querySelectorAll('.msg-type-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.msg-type-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.msg-form-part').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelector(`.msg-form-part[data-part="${btn.dataset.type}"]`).classList.add('active');
+      });
+    });
+
+    document.getElementById('msg-image-input').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file || !file.type.startsWith('image/')) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        document.getElementById('msg-image-data').value = reader.result;
+        const preview = document.getElementById('msg-image-preview');
+        document.getElementById('msg-preview-img').src = reader.result;
+        preview.style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+    });
+
+    let mediaRecorder, audioChunks;
+    document.getElementById('msg-record-btn').addEventListener('click', async function() {
+      if (mediaRecorder && mediaRecorder.state === 'recording') {
+        mediaRecorder.stop();
+        return;
+      }
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mediaRecorder = new MediaRecorder(stream);
+        audioChunks = [];
+        mediaRecorder.ondataavailable = (e) => { if (e.data.size) audioChunks.push(e.data); };
+        mediaRecorder.onstop = () => {
+          stream.getTracks().forEach(t => t.stop());
+          const blob = new Blob(audioChunks, { type: 'audio/webm' });
+          const reader = new FileReader();
+          reader.onload = () => {
+            document.getElementById('msg-voice-data').value = reader.result;
+            document.getElementById('msg-voice-preview').innerHTML = '<audio controls src="' + reader.result + '" style="max-width:100%"></audio>';
+            document.getElementById('msg-voice-preview').style.display = 'block';
+          };
+          reader.readAsDataURL(blob);
+        };
+        mediaRecorder.start();
+        this.classList.add('recording');
+        this.textContent = '⏹ Dừng ghi âm';
+      } catch (err) {
+        alert('Không thể truy cập microphone. Kiểm tra quyền trình duyệt.');
+      }
+    });
+
+    function confirmDeleteMessage(msgTime) {
+      showPasswordModal(() => {
+        const arr = getMessages();
+        const idx = arr.findIndex(m => (m.time || 0) === msgTime);
+        if (idx !== -1) { arr.splice(idx, 1); saveMessages(arr); }
+      });
+    }
+
+    document.getElementById('message-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const type = document.querySelector('.msg-type-btn.active').dataset.type;
+      const arr = getMessages();
+      const msg = { time: Date.now() };
+      if (type === 'text') {
+        const text = document.getElementById('msg-text').value.trim();
+        if (!text) return;
+        msg.text = text;
+      } else if (type === 'image') {
+        const img = document.getElementById('msg-image-data').value;
+        if (!img) { alert('Vui lòng chọn ảnh'); return; }
+        msg.image = img;
+      } else if (type === 'voice') {
+        const voice = document.getElementById('msg-voice-data').value;
+        if (!voice) { alert('Vui lòng ghi âm trước'); return; }
+        msg.voice = voice;
+      } else return;
+      arr.push(msg);
+      saveMessages(arr);
+      document.getElementById('msg-text').value = '';
+      document.getElementById('msg-image-data').value = '';
+      document.getElementById('msg-image-input').value = '';
+      document.getElementById('msg-image-preview').style.display = 'none';
+      document.getElementById('msg-voice-data').value = '';
+      document.getElementById('msg-voice-preview').innerHTML = '';
+      document.getElementById('msg-voice-preview').style.display = 'none';
+      document.getElementById('msg-record-btn').classList.remove('recording');
+      document.getElementById('msg-record-btn').textContent = '🎤 Nhấn để ghi âm';
+    });
+
+    (async function init() {
+      await loadData();
+      renderAll();
+    })();
+  </script>
+</body>
+</html>

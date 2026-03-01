@@ -1,0 +1,7 @@
+{
+  "name": "nhat-ky-tinh-yeu",
+  "version": "1.0.0",
+  "dependencies": {
+    "@octokit/rest": "^20.0.0"
+  }
+}
